@@ -8,14 +8,18 @@ function setup() {
 function draw() {
   background(255);  // Fondo blanco en cada frame
 
-  // Establecer el color de relleno del círculo (rojo)
-  fill(255, 0, 0);
+  // Establecer el color de relleno de los triángulos (naranja)
+  fill(255, 165, 0);
 
-  // Calcular la posición del círculo con movimiento circular
+  // Calcular la posición de los triángulos con movimiento circular
   // Usamos la función 'cos' y 'sin' para el movimiento circular
-  let x = width / 2 + cos(frameCount * 0.05) * 200;  // Movimiento en el eje X
-  let y = height / 2 + sin(frameCount * 0.05) * 200;  // Movimiento en el eje Y
 
-  // Dibujar el círculo en la posición calculada
-  ellipse(x, y, 50, 50);  // Círculo de 50x50 píxeles
+  for (let i = 0; i < 3; i++) {
+    let angle = frameCount * 0.05 + i * TWO_PI / 3;  // Desfase para crear 3 triángulos
+    let x = width / 2 + cos(angle) * 200;  // Movimiento en el eje X
+    let y = height / 2 + sin(angle) * 200;  // Movimiento en el eje Y
+
+    // Dibujar cada triángulo en su posición calculada
+    triangle(x - 20, y + 20, x + 20, y + 20, x, y - 30);  // Triángulo con vértices desplazados
+  }
 }
